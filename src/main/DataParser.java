@@ -44,6 +44,10 @@ public class DataParser {
                     break;
                 case "-out": 
                     break;
+                case "-cal":
+                    break;
+                case "-cfgw":
+                    break;
                 case "-rst":
                     toConsole("Previous session had "+String.valueOf(error)+" connection errors.");
                     toConsole("Reset done!");
@@ -63,6 +67,9 @@ public class DataParser {
                 temp[row] = (Integer.valueOf(message)); //collect temps
                 
                 if (row<nTemp-3 & temp[row]>= maxTCell) { //find highest temp cell rows
+                    maxTCell = 0; //reset max cell temp 
+                    Arrays.fill(isMaxTRow, false); //reset max row counter
+                    
                     maxTCell = temp[row];//to find the highest cell temp
                     isMaxTRow[row] = true; //maxTCell row number
                 } 
@@ -73,9 +80,7 @@ public class DataParser {
                     btemp=false;
                     UART.controller.setTemp(temp);
                     UART.controller.setMaxTempColor(isMaxTRow);
-                    maxT = temp[nTemp-1]; //last element is maxT
-                    maxTCell = 0; //reset max cell temp
-                    Arrays.fill(isMaxTRow, false); //reset max row counter
+                    maxT = temp[nTemp-1]; //last element is maxT                   
                     //toConsole(temp.toString());
                 }
             }
@@ -108,11 +113,7 @@ public class DataParser {
                 row++; //increase row on error
                 error++; //count errors
             }
-        } else {//error in data, not a digit
-            row++; //increase row on error
-            error++; //count errors
-        }
-        
+        }       
             
         if (row==nCells) {                  
             bvoltages = false; //reset flag when last row arrived   
@@ -122,8 +123,7 @@ public class DataParser {
             UART.controller.setMinVCellColor(minVRow);
             UART.controller.setBalIndicator(bBalance);
             //UART.controller.appendLogWindow(String.valueOf(bBalance[0]));
-            minCellV = maxVcell ; //reset refernce v
-            
+            minCellV = maxVcell ; //reset refernce v            
         }         
     }
     
