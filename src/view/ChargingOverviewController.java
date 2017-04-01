@@ -162,6 +162,7 @@ public class ChargingOverviewController {
         if (!xTelg.isAutoRanging()) { //if autoRange is off, set back to degault bounds
             xTelg.setUpperBound(4.3);
             xTelg.setLowerBound(3.2);
+            xTelg.setTickUnit(0.1);
         } 
     }
     
@@ -361,7 +362,7 @@ public class ChargingOverviewController {
         Platform.runLater(() -> {
             for (int i = 0; i < pBar.size(); i++){
                 hints.add(new Tooltip()); //every loop adds new tooltip element to the list
-                hints.get(i).setText(String.valueOf((double)volts[i][0]/1000)); //set the tooltip value
+                hints.get(i).setText(String.valueOf((double)volts[i][0]/10000)); //set the tooltip value
                 pBar.get(i).setTooltip(hints.get(i)); //attach tooltip to the progress bar element
             }            
         }); 

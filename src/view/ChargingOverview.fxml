@@ -37,7 +37,7 @@
                               <Insets bottom="10.0" left="15.0" top="10.0" />
                            </padding>
                         </HBox>
-                        <TextArea fx:id="log" editable="false" focusTraversable="false" minHeight="-Infinity" minWidth="390.0" mouseTransparent="true" prefHeight="182.0" prefWidth="520.0" text="Charging controller" wrapText="true">
+                        <TextArea fx:id="log" editable="false" focusTraversable="false" minHeight="-Infinity" minWidth="390.0" prefHeight="182.0" prefWidth="520.0" text="Charging controller" wrapText="true">
                            <VBox.margin>
                               <Insets left="15.0" top="10.0" />
                            </VBox.margin></TextArea>
