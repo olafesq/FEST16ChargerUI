@@ -21,7 +21,7 @@ public class DataParser {
     int[] temp = new int[nTemp];
     int row = 0;
     int maxTCell = 0;
-    int error = 0; //count errors in messages, but not used really
+    int error = 0; //count errors in messages
         
     public void parseMsg(String message){
         //toConsole(message); //mirror everything to the console //this will overflow java fx console window
