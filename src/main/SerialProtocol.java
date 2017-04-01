@@ -5,6 +5,8 @@ import gnu.io.SerialPortEventListener;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SerialProtocol {  
    
@@ -31,7 +33,7 @@ public class SerialProtocol {
             if (connected==false){
                 dataParser.toConsole("Connect first..");
             } else {                     
-                Runnable runnable = () -> { //lambda expression
+                //Runnable runnable = () -> { //lambda expression
                     try {
                         // sending through serial port is simply writing into OutputStream
                         out.write(bytes);
@@ -39,9 +41,15 @@ public class SerialProtocol {
                     } catch (IOException e) {  
                         dataParser.toConsole(e.toString());
                     }
-                };
-                Thread t = new Thread(runnable);
-                t.start();
+                //};
+                //Thread t = new Thread(runnable);
+                //t.start();
+                
+                //try {
+                //    t.join(); //and join thread when sent, otherwise every time new thread is created
+                //} catch (InterruptedException ex) {
+                //    Logger.getLogger(SerialProtocol.class.getName()).log(Level.SEVERE, null, ex);
+                //}
             }           
         }         
     }  
